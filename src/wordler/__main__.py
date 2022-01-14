@@ -5,7 +5,7 @@ from wordler.solver import solve_daily
 
 result = solve_daily(size=PUZZLE_SIZE)
 
-header = f"Daily {PUZZLE_SIZE} - {date.today().isoformat()}"
+header = f"Daily size {PUZZLE_SIZE} for {date.today().isoformat()}"
 
 print(header)
 for row in result.emojis:

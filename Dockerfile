@@ -12,4 +12,4 @@ RUN poetry install --no-dev
 COPY . .
 RUN poetry build && pip install dist/*.whl
 
-CMD ["python", "-m", "action_python_poetry"]
+CMD ["python", "-m", "wordler"]

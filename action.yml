@@ -1,20 +1,21 @@
-name: "action-python-poetry"
-author: your-name
+name: "wordler"
+author: k2bd
 description: >
-  A template action that says hello to you, potentially multiple times.
+  An action that solves my daily wordle puzzle.
 runs:
   using: docker
   image: Dockerfile
 inputs:
-  helloName:
+  wordleApiUrl:
     description: >
-      AoC user ID. See the README for instructions on getting this.
-    required: true
-  repeats:
-    description: >
-      Number of times to say hello
+      URL of the wordle API
     required: false
-    default: 1
+    default: https://v1.wordle.k2bd.dev
+  puzzleSize:
+    description: >
+      Size of the puzzle to solve
+    required: false
+    default: '5'
 branding:
-  icon: "gift"
+  icon: "book-open"
   color: "purple"

@@ -1,48 +1,38 @@
-# Python + Poetry GitHub Action Template
+# A simple Wordle solver
 
-## Getting started from the template
-1. Rename the `src/action_python_poetry` package.
-1. Globally replace instances of `action-python-poetry` and `action_python_poetry` with your project and package name.
-1. If your repo is private, set it up on [CodeCov](https://app.codecov.io/) and add a codecov token to your repo under the `CODECOV_TOKEN` secret.
-1. Create and test your action. `__main__.py` in your package will be executed when the action is run. The environment variables your tests use can be [set in `pyproject.toml`](https://github.com/k2bd/action-python-poetry/blob/694756b8ff6656f8e1a9a4a141f293100f55229d/pyproject.toml#L39-L41) and/or managed in test fixtures.
-1. Update `action.yml`, `README.md`, and `.github/workflows/test-action.yml` to reflect your action's specification.
-1. Update `LICENSE.md` as appropriate, making sure to retain the original copyright and permissions notices in your distribution according to the MIT license that this template is distributed under.
-1. Remove this section from `README.md`.
-1. Happy hacking!
-
-### Like this template?
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://www.buymeacoffee.com/k2bd)
+An action that solves unofficial [wordle](https://www.powerlanguage.co.uk/wordle/) puzzles provided by [my API](https://github.com/k2bd/wordle-api).
 
 ## Quickstart
 
 ```yml
-name: Run Action
+name: Solve daily puzzles
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * *"  # At 8am
 
 jobs:
-  action-python-poetry:
+  wordler:
     runs-on: ubuntu-latest
     steps:
-      - uses: k2bd/action-python-poetry@v1
+      - uses: k2bd/wordler@v1
         with:
-          helloName: k2bd
-          repeats: 3
+          puzzleSize: 6
 ```
 
 ## Action Specification
 
-### `helloName`
+### `wordleApiUrl`
 
-**Required**
+*Optional* - default `https://v1.wordle.k2bd.dev`
 
-The name of the person to say hello to
+URL of the wordle API
 
-### `repeats`
+### `puzzleSize`
 
-*Optional* - default 1
+*Optional* - default 5
 
-Number of times to say hello to this person
+Size of the puzzle to solve
+
 
 ## Developing
 
